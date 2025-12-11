@@ -62,7 +62,7 @@ The landing page features an advanced code animation system that:
 ### Development
 To modify the project:
 
-1. Edit `assets/json/code.json` to add or change code examples
+1. Edit `assets/json/code.json` (!IMPORTANT) to add or change code examples
 2. Update syntax highlighting rules in `core.js`
 3. Adjust animation speeds as needed
 4. Modify CSS variables in `core.css` for styling changes
