@@ -37,12 +37,12 @@
             
             this.loadCodeSnippets().then(() => {
                 this.createEmptyLines();
-                setTimeout(() => this.startAnimation(), 1000);
+                setTimeout(() => this.animateCode(), 1000);
             }).catch(error => {
                 console.error('Failed to load snippets:', error);
                 this.useDefaultSnippets();
                 this.createEmptyLines();
-                setTimeout(() => this.startAnimation(), 1000);
+                setTimeout(() => this.animateCode(), 1000);
             });
         }
         
@@ -128,16 +128,11 @@
             }
         }
         
-        // Функция для создания элементов с подсветкой синтаксиса
         createHighlightedElements(text) {
             if (!text) return [];
             
             const elements = [];
             
-            // НЕ экранируем HTML - будем работать с текстом напрямую
-            // text = this.escapeHtml(text); // УБИРАЕМ эту строку!
-            
-            // Создаем массив для хранения совпадений
             const matches = [];
             
             for (const rule of this.syntaxRules) {
@@ -145,7 +140,6 @@
                 let match;
                 
                 while ((match = regex.exec(text)) !== null) {
-                    // Проверяем, не находится ли это совпадение внутри другого совпадения
                     let isInside = false;
                     for (const existingMatch of matches) {
                         if (match.index >= existingMatch.start && match.index + match[0].length <= existingMatch.end) {
@@ -165,32 +159,26 @@
                 }
             }
             
-            // Сортируем совпадения по позиции
             matches.sort((a, b) => a.start - b.start);
             
-            // Строим элементы
             let position = 0;
             
             for (const match of matches) {
-                // Добавляем текст перед совпадением
                 if (match.start > position) {
                     const beforeText = text.substring(position, match.start);
                     if (beforeText) {
-                        // Используем textContent для безопасного добавления текста
                         elements.push(document.createTextNode(beforeText));
                     }
                 }
                 
-                // Добавляем элемент с подсветкой
                 const span = document.createElement('span');
                 span.className = match.className;
-                span.textContent = match.text; // textContent вместо innerHTML
+                span.textContent = match.text;
                 elements.push(span);
                 
                 position = match.end;
             }
             
-            // Добавляем оставшийся текст
             if (position < text.length) {
                 const remainingText = text.substring(position);
                 if (remainingText) {
@@ -201,20 +189,6 @@
             return elements;
         }
         
-        // Функция для безопасной обработки HTML (используется только для курсора)
-        safeText(text) {
-            // Создаем временный элемент для безопасного добавления текста
-            const temp = document.createElement('div');
-            temp.textContent = text;
-            return temp.innerHTML;
-        }
-        
-        // Упрощенная функция экранирования - только для символов < и >
-        escapeHtml(text) {
-            // Экранируем только < и >
-            return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        }
-        
         async typeLine(lineIndex, text) {
             const line = this.currentLines[lineIndex];
             if (!line) return;
@@ -222,24 +196,19 @@
             const element = line.element;
             element.classList.add('cursor');
             
-            // Очищаем элемент
             element.innerHTML = '';
             line.text = '';
             
-            // Набираем посимвольно
             for (let i = 0; i <= text.length; i++) {
                 const currentText = text.substring(0, i);
                 
-                // Очищаем и добавляем новые элементы
                 element.innerHTML = '';
                 const highlightedElements = this.createHighlightedElements(currentText);
                 
-                // Добавляем все элементы в DOM
                 highlightedElements.forEach(el => {
                     element.appendChild(el);
                 });
                 
-                // Создаем курсор
                 const cursorSpan = document.createElement('span');
                 cursorSpan.className = 'code_cursor';
                 cursorSpan.textContent = '|';
@@ -250,7 +219,6 @@
                 await this.sleep(30 + Math.random() * 20);
             }
             
-            // Убираем курсор
             element.classList.remove('cursor');
             element.querySelector('.code_cursor')?.remove();
             
@@ -266,20 +234,16 @@
             
             const text = line.text;
             
-            // Стираем с конца
             for (let i = text.length; i >= 0; i--) {
                 const currentText = text.substring(0, i);
                 
-                // Очищаем и добавляем новые элементы
                 element.innerHTML = '';
                 const highlightedElements = this.createHighlightedElements(currentText);
                 
-                // Добавляем все элементы в DOM
                 highlightedElements.forEach(el => {
                     element.appendChild(el);
                 });
                 
-                // Добавляем курсор
                 const cursorSpan = document.createElement('span');
                 cursorSpan.className = 'code_cursor';
                 cursorSpan.textContent = '|';
@@ -290,7 +254,6 @@
                 await this.sleep(20 + Math.random() * 10);
             }
             
-            // Очищаем элемент
             element.classList.remove('cursor');
             element.innerHTML = '';
             line.text = '';
@@ -307,40 +270,26 @@
             const codeLines = snippet.code || [];
             const linesToShow = Math.min(codeLines.length, this.totalLines);
             
-            // Печатаем строки
             for (let i = 0; i < linesToShow; i++) {
                 if (codeLines[i] !== undefined) {
                     await this.typeLine(i, codeLines[i]);
                 }
             }
             
-            // Пауза
             await this.sleep(3000);
             
-            // Стираем строки (в обратном порядке)
             for (let i = linesToShow - 1; i >= 0; i--) {
                 if (codeLines[i] !== undefined) {
                     await this.eraseLine(i);
                 }
             }
             
-            // Пауза после стирания
             await this.sleep(800);
             
-            // Следующий сниппет
             this.currentSnippetIndex = (this.currentSnippetIndex + 1) % this.codeSnippets.length;
             this.isAnimating = false;
             
-            // Следующий цикл
             setTimeout(() => this.animateCode(), 500);
-        }
-        
-        startAnimation() {
-            if (this.codeSnippets.length > 0) {
-                this.animateCode();
-            } else {
-                setTimeout(() => this.startAnimation(), 1000);
-            }
         }
         
         sleep(ms) {
@@ -348,7 +297,6 @@
         }
     }
     
-    // Добавляем стиль для курсора
     const style = document.createElement('style');
     style.textContent = `
         .code_cursor {
@@ -362,17 +310,8 @@
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
         }
-        
-        .code_line_content.cursor .code_cursor {
-            display: inline;
-        }
     `;
     document.head.appendChild(style);
     
-    // Инициализация
-    document.addEventListener('DOMContentLoaded', () => {
-        const animator = new CodeAnimator();
-        animator.init();
-        window.CodeAnimator = animator;
-    });
+    window.CodeAnimator = new CodeAnimator();
 })();
