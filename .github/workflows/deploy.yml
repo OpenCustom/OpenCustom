@@ -1,0 +1,25 @@
+name: Deploy Static Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Trigger on pushes to the main branch
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js (or other build environment)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build # The command to build your site
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The folder with your final, built files
