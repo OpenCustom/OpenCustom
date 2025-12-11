@@ -27,11 +27,6 @@
     --cursor-color: #569cd6;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -43,8 +38,6 @@ body {
     font-family: var(--text-primary-font);
     color: var(--text-primary-color);
     min-height: 100vh;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
 
 .welcome_content {
@@ -82,8 +75,6 @@ body {
     height: 540px;
     overflow-y: auto;
     margin: 0;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
 
 .main_content__left-side-our-links__box {
