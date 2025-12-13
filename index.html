@@ -3,268 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenCustom - Landing Page</title>
+    <title>OpenCustom - Open Source Development</title>
     <link rel="stylesheet" href="./core.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-        /* Preloader styles */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #141414;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-        
-        .preloader-logo {
-            max-width: 200px;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        .preloader-text {
-            color: #fff;
-            font-family: 'Nico Moji', sans-serif;
-            font-size: 18px;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards 0.3s;
-        }
-        
-        .preloader-progress {
-            width: 300px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .preloader-progress-bar {
-            height: 100%;
-            background: #569cd6;
-            width: 0%;
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-        
-        .preloader-percentage {
-            color: #686868;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            margin-top: 10px;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards 0.6s;
-        }
-        
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-        
-        /* Hide body initially */
-        body {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        body.loaded {
-            opacity: 1;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <img src="./assets/images/opencustom.png" alt="OpenCustom" class="preloader-logo">
-        <div class="preloader-text">Loading OpenCustom</div>
-        <div class="preloader-progress">
-            <div class="preloader-progress-bar" id="progressBar"></div>
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader__container">
+            <img src="./assets/images/opencustom.png" alt="OpenCustom Logo" class="preloader__logo">
+            <div class="preloader__text">Initializing OpenCustom</div>
+            <div class="preloader__progress">
+                <div class="preloader__progress-bar" id="progressBar"></div>
+            </div>
+            <div class="preloader__percentage" id="percentage">0%</div>
         </div>
-        <div class="preloader-percentage" id="percentage">0%</div>
     </div>
+
+    <!-- Header for mobile -->
+    <header class="mobile-header">
+        <div class="mobile-header__logo">
+            <img src="./assets/images/opencustom.png" alt="OpenCustom">
+        </div>
+        <button class="mobile-header__menu-btn" id="menuBtn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu__header">
+            <img src="./assets/images/opencustom.png" alt="OpenCustom" class="mobile-menu__logo">
+            <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu__links">
+            <a href="https://github.com/opencustom" target="_blank" class="mobile-menu__link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="#" class="mobile-menu__link">
+                <i class="fas fa-code"></i>
+                <span>Projects</span>
+            </a>
+            <a href="#" class="mobile-menu__link">
+                <i class="fas fa-book"></i>
+                <span>Documentation</span>
+            </a>
+            <a href="#" class="mobile-menu__link">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+    </nav>
 
     <!-- Main Content -->
-    <div class="welcome_content">
-        <p class="welcome_content__text">
-            Everything whatever We're development is Open-Source and you can edit our scripts to you needs.
-        </p>
-    </div>
+    <main class="main-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-section__container">
+                <h1 class="welcome-section__title">
+                    Everything We Develop is <span class="highlight">Open-Source</span>
+                </h1>
+                <p class="welcome-section__description">
+                    Customize our scripts to fit your specific needs and contribute to the community.
+                </p>
+            </div>
+        </section>
 
-    <div class="main_content">
-        <div class="main_content__left-side">
-            <p class="main_content__left-side-text_info">
-                The open-source model is the most powerful engine for innovation in the digital age. 
-                Yet, harnessing its raw potential for mission-critical applications requires more than 
-                just download and install. It demands deep expertise, strategic stewardship, and 
-                meticulous craftsmanship. OpenCustom Inc. was founded on this precise premise. 
-                We believe true value lies not just in consuming open-source, but in actively 
-                contributing to its ecosystem while expertly adapting it to solve unique, complex 
-                challenges. We operate with a dual heartbeat: a passion for the collaborative ethos 
-                of the community and a relentless focus on the performance, security, and strategic 
-                fit required by business. We are the essential bridge. We translate the agility and 
-                openness of community projects into the resilience and accountability that enterprises 
-                demand.
-            </p>
+        <!-- Main Content Section -->
+        <section class="content-section">
+            <div class="content-grid">
+                <!-- Left Column: About -->
+                <div class="content-column content-column--left">
+                    <article class="about-card">
+                        <h2 class="about-card__title">Our Philosophy</h2>
+                        <div class="about-card__content">
+                            <p>The open-source model is the most powerful engine for innovation in the digital age. Yet, harnessing its raw potential for mission-critical applications requires more than just download and install.</p>
+                            <p>It demands deep expertise, strategic stewardship, and meticulous craftsmanship. OpenCustom Inc. was founded on this precise premise. We believe true value lies not just in consuming open-source, but in actively contributing to its ecosystem while expertly adapting it to solve unique, complex challenges.</p>
+                            <p>We operate with a dual heartbeat: a passion for the collaborative ethos of the community and a relentless focus on the performance, security, and strategic fit required by business. We are the essential bridge.</p>
+                        </div>
+                        
+                        <div class="links-card">
+                            <h3 class="links-card__title">Our Links</h3>
+                            <div class="links-card__grid">
+                                <a href="https://github.com/opencustom" target="_blank" class="link-item" aria-label="GitHub Repository">
+                                    <div class="link-item__icon">
+                                        <i class="fab fa-github"></i>
+                                    </div>
+                                    <div class="link-item__text">
+                                        <span class="link-item__title">GitHub</span>
+                                        <span class="link-item__subtitle">View our repositories</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="link-item" aria-label="Documentation">
+                                    <div class="link-item__icon">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div class="link-item__text">
+                                        <span class="link-item__title">Docs</span>
+                                        <span class="link-item__subtitle">Read documentation</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="link-item" aria-label="Community">
+                                    <div class="link-item__icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="link-item__text">
+                                        <span class="link-item__title">Community</span>
+                                        <span class="link-item__subtitle">Join discussions</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="link-item" aria-label="Blog">
+                                    <div class="link-item__icon">
+                                        <i class="fas fa-blog"></i>
+                                    </div>
+                                    <div class="link-item__text">
+                                        <span class="link-item__title">Blog</span>
+                                        <span class="link-item__subtitle">Latest updates</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
 
-            <div class="main_content__left-side-our-links__box">
-                <div class="main_content__left-side-our-links__box-title">OUR LINKS</div>
-                <div class="main_content__left-side-our-links__box-content">
-                    <a href="https://github.com/opencustom" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="main_content__left-side-our-links__box-link">
-                        <img src="./assets/images/github.png" 
-                             alt="GitHub" 
-                             class="main_content__left-side-our-links__box-icon">
+                <!-- Center Column: Logo -->
+                <div class="content-column content-column--center">
+                    <div class="logo-display">
+                        <div class="logo-display__container">
+                            <img src="./assets/images/opencustom.png" alt="OpenCustom Logo" class="logo-display__image">
+                            <div class="logo-display__glow"></div>
+                        </div>
+                        <div class="logo-display__tagline">
+                            Bridging Open Source & Enterprise
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Code & Description -->
+                <div class="content-column content-column--right">
+                    <div class="code-display">
+                        <div class="code-display__header">
+                            <div class="code-display__file-info">
+                                <div class="code-display__icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <div class="code-display__filename">example.tsx</div>
+                            </div>
+                            <div class="code-display__actions">
+                                <button class="code-display__btn" id="pauseBtn" aria-label="Pause animation">
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <button class="code-display__btn" id="nextBtn" aria-label="Next snippet">
+                                    <i class="fas fa-forward"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="code-display__container">
+                            <div class="code-display__lines" id="codeLines"></div>
+                        </div>
+                    </div>
+
+                    <article class="description-card">
+                        <h3 class="description-card__title">Custom Integration</h3>
+                        <div class="description-card__content">
+                            <p>Off-the-shelf is a starting point, not the finish line. Our engineers dive deep into the source code to modify, extend, and seamlessly integrate open-source solutions into your unique technological landscape.</p>
+                            <p>We break down silos, create custom plugins and modules, and ensure the final product feels not imported, but inherently built for your workflows and objectives.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__logo">
+                    <img src="./assets/images/opencustom.png" alt="OpenCustom" class="footer__logo-image">
+                </div>
+                <div class="footer__text">
+                    <p>© 2025 OpenCustom Inc. All code is open-source and available under MIT License.</p>
+                    <p>Empowering innovation through open collaboration.</p>
+                </div>
+                <div class="footer__social">
+                    <a href="https://github.com/opencustom" target="_blank" class="footer__social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
                     </a>
                 </div>
             </div>
-        </div>
+        </footer>
+    </main>
 
-        <div class="main_content__center">
-            <div class="main_content__center-opencustom-image">
-                <img src="./assets/images/opencustom.png" alt="opencustom-logo" />
-            </div>
-        </div>
-
-        <div class="main_content__right-side">
-            <div class="main_content__right-side-code_section">
-                <div class="main_content__right-side-code_section-file">
-                    <div class="main_content__right-side-code_section-file-logotype">
-                        <img src="./assets/images/react.png" alt="react">
-                    </div>
-                    <div class="main_content__right-side-code_section-file-filename">index.tsx</div>
-                </div>
-
-                <div class="main_content__right-side-code_section-lines_wrapper">
-                    <!-- Code lines will be generated by JavaScript -->
-                </div>
-            </div>
-
-            <div class="main_content__right-side-text">
-                Off-the-shelf is a starting point, not the finish line. Our engineers dive deep into the source code to modify, extend, and seamlessly integrate open-source solutions into your unique technological landscape. We break down silos, create custom plugins and modules, and ensure the final product feels not imported, but inherently built for your workflows and objectives.
-            </div>
-        </div>
-    </div>
-
-    <script src="./core.js"></script>
-    <script>
-        // Preloader functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const preloader = document.getElementById('preloader');
-            const progressBar = document.getElementById('progressBar');
-            const percentage = document.getElementById('percentage');
-            
-            let progress = 0;
-            let loadedResources = 0;
-            
-            // Count all resources to load
-            const resources = [
-                // Images
-                './assets/images/opencustom.png',
-                './assets/images/github.png',
-                './assets/images/react.png',
-                // Fonts
-                './assets/fonts/NicoMoji.ttf',
-                'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap',
-                // Files
-                './core.css',
-                './core.js',
-                './assets/json/code.json'
-            ];
-            
-            // Track resource loading
-            function resourceLoaded() {
-                loadedResources++;
-                progress = Math.floor((loadedResources / resources.length) * 100);
-                progressBar.style.width = progress + '%';
-                percentage.textContent = progress + '%';
-                
-                if (progress >= 100) {
-                    setTimeout(() => {
-                        preloader.style.opacity = '0';
-                        
-                        setTimeout(() => {
-                            preloader.style.display = 'none';
-                            document.body.classList.add('loaded');
-                            
-                            // Start code animation after preloader is hidden
-                            if (window.CodeAnimator && window.CodeAnimator.init) {
-                                window.CodeAnimator.init();
-                            }
-                        }, 500);
-                    }, 500);
-                }
-            }
-            
-            // Load all resources
-            resources.forEach(resource => {
-                if (resource.endsWith('.css')) {
-                    const link = document.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.href = resource;
-                    link.onload = resourceLoaded;
-                    link.onerror = resourceLoaded;
-                    document.head.appendChild(link);
-                } else if (resource.endsWith('.js')) {
-                    const script = document.createElement('script');
-                    script.src = resource;
-                    script.onload = resourceLoaded;
-                    script.onerror = resourceLoaded;
-                    document.head.appendChild(script);
-                } else if (resource.endsWith('.json')) {
-                    fetch(resource)
-                        .then(() => resourceLoaded())
-                        .catch(() => resourceLoaded());
-                } else if (resource.includes('fonts.googleapis.com')) {
-                    const link = document.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.href = resource;
-                    link.onload = resourceLoaded;
-                    link.onerror = resourceLoaded;
-                    document.head.appendChild(link);
-                } else {
-                    // Images and other resources
-                    const img = new Image();
-                    img.src = resource;
-                    img.onload = resourceLoaded;
-                    img.onerror = resourceLoaded;
-                }
-            });
-            
-            // Fallback: if something goes wrong, finish after 3 seconds
-            setTimeout(() => {
-                if (progress < 100) {
-                    progress = 100;
-                    progressBar.style.width = '100%';
-                    percentage.textContent = '100%';
-                    
-                    setTimeout(() => {
-                        preloader.style.opacity = '0';
-                        
-                        setTimeout(() => {
-                            preloader.style.display = 'none';
-                            document.body.classList.add('loaded');
-                            
-                            if (window.CodeAnimator && window.CodeAnimator.init) {
-                                window.CodeAnimator.init();
-                            }
-                        }, 500);
-                    }, 500);
-                }
-            }, 3000);
-        });
-    </script>
+    <script src="./core.js" type="module"></script>
 </body>
 </html>
