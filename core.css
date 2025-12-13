@@ -836,7 +836,7 @@ a:hover {
 }
 
 /* Dark Mode Support (already dark, but adding system preference support) */
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     :root {
         --color-primary: #ffffff;
         --color-secondary: #f5f5f5;
