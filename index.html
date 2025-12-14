@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>OpenCustom - Open Source Development</title>
     <link rel="stylesheet" href="./core.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="./assets/images/opencustom.png" type="image/png">
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader" id="preloader">
         <div class="preloader__container">
-            <img src="./assets/images/opencustom.png" alt="OpenCustom Logo" class="preloader__logo">
+            <div class="preloader__orb">
+                <div class="preloader__orb-inner"></div>
+                <img src="./assets/images/opencustom.png" alt="OpenCustom Logo" class="preloader__logo">
+            </div>
             <div class="preloader__text">Initializing OpenCustom</div>
             <div class="preloader__progress">
                 <div class="preloader__progress-bar" id="progressBar"></div>
@@ -23,181 +28,424 @@
         </div>
     </div>
 
-    <!-- Header for mobile -->
-    <header class="mobile-header">
-        <div class="mobile-header__logo">
-            <img src="./assets/images/opencustom.png" alt="OpenCustom">
-        </div>
-        <button class="mobile-header__menu-btn" id="menuBtn" aria-label="Toggle menu">
-            <i class="fas fa-bars"></i>
-        </button>
-    </header>
-
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu__header">
-            <img src="./assets/images/opencustom.png" alt="OpenCustom" class="mobile-menu__logo">
-            <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Close menu">
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav__header">
+            <img src="./assets/images/opencustom.png" alt="OpenCustom" class="mobile-nav__logo">
+            <button class="mobile-nav__close" id="closeMenuBtn" aria-label="Close menu">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="mobile-menu__links">
-            <a href="https://github.com/opencustom" target="_blank" class="mobile-menu__link">
+        <div class="mobile-nav__links">
+            <a href="https://github.com/opencustom" target="_blank" class="mobile-nav__link" data-count="20+">
                 <i class="fab fa-github"></i>
-                <span>GitHub</span>
+                <span>GitHub Repos</span>
+                <span class="mobile-nav__badge">20+</span>
             </a>
-            <a href="#" class="mobile-menu__link">
+            <a href="#projects" class="mobile-nav__link">
                 <i class="fas fa-code"></i>
                 <span>Projects</span>
             </a>
-            <a href="#" class="mobile-menu__link">
+            <a href="#docs" class="mobile-nav__link">
                 <i class="fas fa-book"></i>
                 <span>Documentation</span>
             </a>
-            <a href="#" class="mobile-menu__link">
+            <a href="#community" class="mobile-nav__link">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+            <a href="#contact" class="mobile-nav__link">
                 <i class="fas fa-envelope"></i>
                 <span>Contact</span>
             </a>
         </div>
+        <div class="mobile-nav__footer">
+            <div class="mobile-nav__social">
+                <a href="https://github.com/opencustom" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" aria-label="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-container">
-        <!-- Welcome Section -->
-        <section class="welcome-section">
-            <div class="welcome-section__container">
-                <h1 class="welcome-section__title">
-                    Everything We Develop is <span class="highlight">Open-Source</span>
-                </h1>
-                <p class="welcome-section__description">
-                    Customize our scripts to fit your specific needs and contribute to the community.
-                </p>
-            </div>
-        </section>
-
-        <!-- Main Content Section -->
-        <section class="content-section">
-            <div class="content-grid">
-                <!-- Left Column: About -->
-                <div class="content-column content-column--left">
-                    <article class="about-card">
-                        <h2 class="about-card__title">Our Philosophy</h2>
-                        <div class="about-card__content">
-                            <p>The open-source model is the most powerful engine for innovation in the digital age. Yet, harnessing its raw potential for mission-critical applications requires more than just download and install.</p>
-                            <p>It demands deep expertise, strategic stewardship, and meticulous craftsmanship. OpenCustom Inc. was founded on this precise premise. We believe true value lies not just in consuming open-source, but in actively contributing to its ecosystem while expertly adapting it to solve unique, complex challenges.</p>
-                            <p>We operate with a dual heartbeat: a passion for the collaborative ethos of the community and a relentless focus on the performance, security, and strategic fit required by business. We are the essential bridge.</p>
-                        </div>
-                        
-                        <div class="links-card">
-                            <h3 class="links-card__title">Our Links</h3>
-                            <div class="links-card__grid">
-                                <a href="https://github.com/opencustom" target="_blank" class="link-item" aria-label="GitHub Repository">
-                                    <div class="link-item__icon">
-                                        <i class="fab fa-github"></i>
-                                    </div>
-                                    <div class="link-item__text">
-                                        <span class="link-item__title">GitHub</span>
-                                        <span class="link-item__subtitle">View our repositories</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="link-item" aria-label="Documentation">
-                                    <div class="link-item__icon">
-                                        <i class="fas fa-book"></i>
-                                    </div>
-                                    <div class="link-item__text">
-                                        <span class="link-item__title">Docs</span>
-                                        <span class="link-item__subtitle">Read documentation</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="link-item" aria-label="Community">
-                                    <div class="link-item__icon">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <div class="link-item__text">
-                                        <span class="link-item__title">Community</span>
-                                        <span class="link-item__subtitle">Join discussions</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="link-item" aria-label="Blog">
-                                    <div class="link-item__icon">
-                                        <i class="fas fa-blog"></i>
-                                    </div>
-                                    <div class="link-item__text">
-                                        <span class="link-item__title">Blog</span>
-                                        <span class="link-item__subtitle">Latest updates</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="main-header__content">
+                <div class="main-header__logo">
+                    <img src="./assets/images/opencustom.png" alt="OpenCustom">
+                    <span class="main-header__logo-text">OpenCustom</span>
                 </div>
-
-                <!-- Center Column: Logo -->
-                <div class="content-column content-column--center">
-                    <div class="logo-display">
-                        <div class="logo-display__container">
-                            <img src="./assets/images/opencustom.png" alt="OpenCustom Logo" class="logo-display__image">
-                            <div class="logo-display__glow"></div>
-                        </div>
-                        <div class="logo-display__tagline">
-                            Bridging Open Source & Enterprise
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Code & Description -->
-                <div class="content-column content-column--right">
-                    <div class="code-display">
-                        <div class="code-display__header">
-                            <div class="code-display__file-info">
-                                <div class="code-display__icon">
-                                    <i class="fab fa-react"></i>
-                                </div>
-                                <div class="code-display__filename">example.tsx</div>
-                            </div>
-                            <div class="code-display__actions">
-                                <button class="code-display__btn" id="pauseBtn" aria-label="Pause animation">
-                                    <i class="fas fa-pause"></i>
-                                </button>
-                                <button class="code-display__btn" id="nextBtn" aria-label="Next snippet">
-                                    <i class="fas fa-forward"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="code-display__container">
-                            <div class="code-display__lines" id="codeLines"></div>
-                        </div>
-                    </div>
-
-                    <article class="description-card">
-                        <h3 class="description-card__title">Custom Integration</h3>
-                        <div class="description-card__content">
-                            <p>Off-the-shelf is a starting point, not the finish line. Our engineers dive deep into the source code to modify, extend, and seamlessly integrate open-source solutions into your unique technological landscape.</p>
-                            <p>We break down silos, create custom plugins and modules, and ensure the final product feels not imported, but inherently built for your workflows and objectives.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer__container">
-                <div class="footer__logo">
-                    <img src="./assets/images/opencustom.png" alt="OpenCustom" class="footer__logo-image">
-                </div>
-                <div class="footer__text">
-                    <p>© 2025 OpenCustom Inc. All code is open-source and available under MIT License.</p>
-                    <p>Empowering innovation through open collaboration.</p>
-                </div>
-                <div class="footer__social">
-                    <a href="https://github.com/opencustom" target="_blank" class="footer__social-link" aria-label="GitHub">
+                
+                <nav class="main-nav" id="mainNav">
+                    <a href="https://github.com/opencustom" target="_blank" class="main-nav__link">
                         <i class="fab fa-github"></i>
+                        <span>GitHub</span>
                     </a>
+                    <a href="#projects" class="main-nav__link">
+                        <i class="fas fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#docs" class="main-nav__link">
+                        <i class="fas fa-book"></i>
+                        <span>Docs</span>
+                    </a>
+                    <a href="#community" class="main-nav__link">
+                        <i class="fas fa-users"></i>
+                        <span>Community</span>
+                    </a>
+                </nav>
+                
+                <div class="main-header__actions">
+                    <button class="btn btn--outline" onclick="window.open('https://github.com/opencustom', '_blank')">
+                        <i class="fab fa-github"></i>
+                        <span>Star Us</span>
+                    </button>
+                    <button class="main-header__menu-btn" id="menuBtn" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
-        </footer>
+        </div>
+    </header>
+
+    <!-- Floating Particles Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-section__content">
+                    <div class="hero-section__badge">
+                        <span class="hero-section__badge-text">OPEN SOURCE</span>
+                        <div class="hero-section__badge-glow"></div>
+                    </div>
+                    
+                    <h1 class="hero-section__title">
+                        <span class="hero-section__title-line">Everything We Develop</span>
+                        <span class="hero-section__title-line hero-section__title-line--highlight">
+                            <span class="text-gradient">Open-Source</span>
+                            <span class="hero-section__title-sparkle">✨</span>
+                        </span>
+                    </h1>
+                    
+                    <p class="hero-section__description">
+                        Customize our scripts to fit your specific needs and contribute to the community.
+                        We bridge the gap between open-source innovation and enterprise solutions.
+                    </p>
+                    
+                    <div class="hero-section__actions">
+                        <button class="btn btn--primary btn--lg" onclick="window.open('https://github.com/opencustom', '_blank')">
+                            <i class="fab fa-github"></i>
+                            <span>Explore GitHub</span>
+                        </button>
+                        <button class="btn btn--outline btn--lg" id="viewDemo">
+                            <i class="fas fa-play-circle"></i>
+                            <span>View Demo</span>
+                        </button>
+                    </div>
+                    
+                    <div class="hero-section__stats">
+                        <div class="stat-card">
+                            <div class="stat-card__value">20+</div>
+                            <div class="stat-card__label">Projects</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__value">100%</div>
+                            <div class="stat-card__label">Open Source</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__value">∞</div>
+                            <div class="stat-card__label">Customizable</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Grid -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-grid">
+                    <!-- Left Column: About -->
+                    <div class="content-column content-column--left">
+                        <article class="card card--about">
+                            <div class="card__header">
+                                <h2 class="card__title">Our Philosophy</h2>
+                                <div class="card__icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                            </div>
+                            <div class="card__content">
+                                <p class="card__paragraph">
+                                    The open-source model is the most powerful engine for innovation in the digital age. 
+                                    Yet, harnessing its raw potential for mission-critical applications requires more than 
+                                    just download and install.
+                                </p>
+                                <p class="card__paragraph">
+                                    It demands deep expertise, strategic stewardship, and meticulous craftsmanship. 
+                                    OpenCustom Inc. was founded on this precise premise. We believe true value lies 
+                                    not just in consuming open-source, but in actively contributing to its ecosystem 
+                                    while expertly adapting it to solve unique, complex challenges.
+                                </p>
+                                <p class="card__paragraph">
+                                    We operate with a dual heartbeat: a passion for the collaborative ethos of the 
+                                    community and a relentless focus on the performance, security, and strategic 
+                                    fit required by business. We are the essential bridge.
+                                </p>
+                            </div>
+                            <div class="card__footer">
+                                <div class="tag-list">
+                                    <span class="tag tag--open-source">Open Source</span>
+                                    <span class="tag tag--community">Community</span>
+                                    <span class="tag tag--innovation">Innovation</span>
+                                    <span class="tag tag--custom">Custom Solutions</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Center Column: Logo & Quick Links -->
+                    <div class="content-column content-column--center">
+                        <div class="logo-display">
+                            <div class="logo-display__container">
+                                <div class="logo-display__orb">
+                                    <img src="./assets/images/opencustom.png" alt="OpenCustom Logo" class="logo-display__image">
+                                    <div class="logo-display__glow"></div>
+                                    <div class="logo-display__ring"></div>
+                                </div>
+                            </div>
+                            <div class="logo-display__tagline">
+                                Bridging Open Source & Enterprise
+                            </div>
+                            <div class="logo-display__links">
+                                <a href="https://github.com/opencustom" target="_blank" class="logo-link">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="#docs" class="logo-link">
+                                    <i class="fas fa-book"></i>
+                                    <span>Documentation</span>
+                                </a>
+                                <a href="#community" class="logo-link">
+                                    <i class="fas fa-users"></i>
+                                    <span>Community</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Code & Features -->
+                    <div class="content-column content-column--right">
+                        <div class="card card--code">
+                            <div class="card__header">
+                                <div class="card__title-group">
+                                    <div class="card__icon">
+                                        <i class="fab fa-react"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="card__title">Live Code Example</h3>
+                                        <div class="card__subtitle">example.tsx</div>
+                                    </div>
+                                </div>
+                                <div class="card__actions">
+                                    <button class="card__action-btn" id="pauseBtn" aria-label="Pause animation">
+                                        <i class="fas fa-pause"></i>
+                                    </button>
+                                    <button class="card__action-btn" id="copyBtn" aria-label="Copy code">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button class="card__action-btn" id="nextBtn" aria-label="Next snippet">
+                                        <i class="fas fa-forward"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card__content">
+                                <div class="code-display" id="codeDisplay">
+                                    <div class="code-display__lines" id="codeLines"></div>
+                                </div>
+                            </div>
+                            <div class="card__footer">
+                                <div class="code-info">
+                                    <span class="code-info__item">
+                                        <i class="fas fa-code"></i>
+                                        TypeScript
+                                    </span>
+                                    <span class="code-info__item">
+                                        <i class="fas fa-expand-alt"></i>
+                                        <span id="lineCount">0</span> lines
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <article class="card card--feature">
+                            <div class="card__header">
+                                <h3 class="card__title">Custom Integration</h3>
+                                <div class="card__icon">
+                                    <i class="fas fa-puzzle-piece"></i>
+                                </div>
+                            </div>
+                            <div class="card__content">
+                                <p class="card__paragraph">
+                                    Off-the-shelf is a starting point, not the finish line. Our engineers dive deep 
+                                    into the source code to modify, extend, and seamlessly integrate open-source 
+                                    solutions into your unique technological landscape.
+                                </p>
+                                <p class="card__paragraph">
+                                    We break down silos, create custom plugins and modules, and ensure the final 
+                                    product feels not imported, but inherently built for your workflows and objectives.
+                                </p>
+                            </div>
+                            <div class="card__features">
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt feature-item__icon"></i>
+                                    <div class="feature-item__content">
+                                        <h4 class="feature-item__title">Security First</h4>
+                                        <p class="feature-item__desc">Enterprise-grade security built-in</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-rocket feature-item__icon"></i>
+                                    <div class="feature-item__content">
+                                        <h4 class="feature-item__title">High Performance</h4>
+                                        <p class="feature-item__desc">Optimized for production workloads</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card-large">
+                        <div class="stat-card-large__icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="stat-card-large__content">
+                            <div class="stat-card-large__value" data-count="24">0</div>
+                            <div class="stat-card-large__label">Open Source Projects</div>
+                        </div>
+                    </div>
+                    <div class="stat-card-large">
+                        <div class="stat-card-large__icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div class="stat-card-large__content">
+                            <div class="stat-card-large__value" data-count="156">0</div>
+                            <div class="stat-card-large__label">Contributions</div>
+                        </div>
+                    </div>
+                    <div class="stat-card-large">
+                        <div class="stat-card-large__icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-card-large__content">
+                            <div class="stat-card-large__value" data-count="89">0</div>
+                            <div class="stat-card-large__label">GitHub Stars</div>
+                        </div>
+                    </div>
+                    <div class="stat-card-large">
+                        <div class="stat-card-large__icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-card-large__content">
+                            <div class="stat-card-large__value" data-count="42">0</div>
+                            <div class="stat-card-large__label">Community Members</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="main-footer__content">
+                <div class="main-footer__brand">
+                    <div class="main-footer__logo">
+                        <img src="./assets/images/opencustom.png" alt="OpenCustom">
+                        <span>OpenCustom</span>
+                    </div>
+                    <p class="main-footer__tagline">
+                        Empowering innovation through open collaboration.
+                    </p>
+                </div>
+                
+                <div class="main-footer__links">
+                    <div class="footer-links">
+                        <h4 class="footer-links__title">Projects</h4>
+                        <a href="#" class="footer-links__link">Frontend Tools</a>
+                        <a href="#" class="footer-links__link">Backend Systems</a>
+                        <a href="#" class="footer-links__link">DevOps</a>
+                        <a href="#" class="footer-links__link">Libraries</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4 class="footer-links__title">Resources</h4>
+                        <a href="#" class="footer-links__link">Documentation</a>
+                        <a href="#" class="footer-links__link">API Reference</a>
+                        <a href="#" class="footer-links__link">Tutorials</a>
+                        <a href="#" class="footer-links__link">Blog</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4 class="footer-links__title">Community</h4>
+                        <a href="#" class="footer-links__link">GitHub Discussions</a>
+                        <a href="#" class="footer-links__link">Contributing Guide</a>
+                        <a href="#" class="footer-links__link">Code of Conduct</a>
+                        <a href="#" class="footer-links__link">Roadmap</a>
+                    </div>
+                </div>
+                
+                <div class="main-footer__social">
+                    <h4 class="main-footer__social-title">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/opencustom" target="_blank" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-footer__bottom">
+                <div class="main-footer__copyright">
+                    © 2025 OpenCustom Inc. All code is open-source and available under MIT License.
+                </div>
+                <div class="main-footer__legal">
+                    <a href="#" class="main-footer__legal-link">Privacy Policy</a>
+                    <a href="#" class="main-footer__legal-link">Terms of Service</a>
+                    <a href="#" class="main-footer__legal-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="./core.js" type="module"></script>
 </body>
